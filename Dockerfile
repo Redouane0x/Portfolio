@@ -39,6 +39,6 @@ EXPOSE 80
 # On s'assure que la base de données est créée et que les droits sont parfaits
 # On crée un dossier DATA spécifique pour SQLite
 RUN mkdir -p /var/www/html/var/data
-RUN touch /var/www/html/var/data/database.sqlite
+RUN touch /var/www/html/var/data/data.db
 RUN chown -R www-data:www-data /var/www/html/var
 RUN chmod -R 777 /var/www/html/var/data
