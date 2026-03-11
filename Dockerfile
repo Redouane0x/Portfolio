@@ -37,7 +37,8 @@ RUN mkdir -p var/cache var/log && chown -R www-data:www-data var/
 EXPOSE 80
 
 # On s'assure que la base de données est créée et que les droits sont parfaits
-RUN mkdir -p var/cache var/log
-RUN touch var/database.sqlite
-RUN chown -R www-data:www-data var/
-RUN chmod -R 775 var/
+# On crée un dossier DATA spécifique pour SQLite
+RUN mkdir -p /var/www/html/var/data
+RUN touch /var/www/html/var/data/database.sqlite
+RUN chown -R www-data:www-data /var/www/html/var
+RUN chmod -R 777 /var/www/html/var/data
