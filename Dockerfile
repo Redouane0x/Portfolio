@@ -1,5 +1,5 @@
 # 1. On part d'une base officielle PHP avec le serveur web Apache
-FROM php:8.2-apache
+FROM php:8.4-apache
 
 # 2. On active l'URL Rewriting (indispensable pour les routes Symfony)
 RUN a2enmod rewrite
@@ -27,6 +27,7 @@ COPY . .
 
 # 8. On installe les dépendances PHP sans les outils de développement
 ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV APP_ENV=prod
 RUN composer install --no-dev --optimize-autoloader --no-interaction
 
 # 9. On donne les bons droits d'écriture aux dossiers de cache et de logs
