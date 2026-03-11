@@ -35,3 +35,8 @@ RUN mkdir -p var/cache var/log && chown -R www-data:www-data var/
 
 # 10. On expose le port 80 pour que Fly.io puisse y accéder
 EXPOSE 80
+
+# On s'assure que la base de données est créée et que les droits sont parfaits
+RUN touch var/database.sqlite
+RUN chown -R www-data:www-data var/
+RUN chmod -R 777 var/
