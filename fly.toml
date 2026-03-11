@@ -25,3 +25,6 @@ primary_region = 'cdg'
 [env]
 DATABASE_URL = "sqlite:///%kernel.project_dir%/var/data/data.db"
 
+[mounts]
+source = "data_sqlite"
+destination = "/var/www/html/var/data"
