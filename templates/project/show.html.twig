@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ project.title }}{% endblock %}
+
+{% block body %}
+    <div class="container expose-container">
+
+        <a href="{{ path('app_home') }}#projects" class="btn-back">
+            <i class="fas fa-arrow-left"></i> Retour aux projets
+        </a>
+
+        <article class="expose-content">
+            <h1 class="expose-title">{{ project.title }}</h1>
+
+            <hr class="expose-divider">
+
+            <div class="expose-text">
+                {{ project.description|raw }}
+            </div>
+
+            {% if project.url %}
+                <div class="expose-footer">
+                    <a href="{{ project.url }}" target="_blank" class="btn">
+                        Voir la source / Le site web <i class="fas fa-external-link-alt"></i>
+                    </a>
+                </div>
+            {% endif %}
+        </article>
+    </div>
+{% endblock %}

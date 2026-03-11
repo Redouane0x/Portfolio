@@ -1,0 +1,829 @@
+/* =========================================
+   1. VARIABLES & CONFIGURATION GLOBALE
+   ========================================= */
+:root {
+    /* Palette de couleurs "Dark Mode" */
+    --bg-color: #0a192f;       /* Fond principal (Bleu nuit profond) */
+    --light-bg: #112240;       /* Fond des cartes et formulaires */
+    --primary-color: #64ffda;  /* Vert Menthe (Couleur d'accent) */
+    --text-color: #8892b0;     /* Gris bleuté (Texte secondaire) */
+    --white: #e6f1ff;          /* Blanc cassé (Titres) */
+
+    /* Typographie */
+    --font-main: 'Poppins', sans-serif;
+
+    /* Effets */
+    --transition: all 0.3s ease-in-out;
+    --shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth; /* Défilement fluide quand on clique sur le menu */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden; /* Empêche le scroll horizontal sur mobile */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: var(--transition);
+}
+
+ul { list-style: none; }
+
+/* =========================================
+   2. BARRE DE NAVIGATION (NAVBAR)
+   ========================================= */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 5%;
+    background-color: rgba(10, 25, 47, 0.95); /* Légère transparence */
+    position: fixed; /* Reste en haut */
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    backdrop-filter: blur(10px); /* Effet de flou derrière le menu */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.logo {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--white);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.nav-links a:hover {
+    color: var(--primary-color);
+}
+
+/* Menu Burger (Mobile) */
+.burger {
+    display: none;
+    cursor: pointer;
+}
+.burger div {
+    width: 25px;
+    height: 3px;
+    background-color: var(--primary-color);
+    margin: 5px;
+    transition: var(--transition);
+}
+
+/* =========================================
+   3. HERO SECTION (ACCUEIL)
+   ========================================= */
+.hero {
+    height: 100vh; /* Prend toute la hauteur de l'écran */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 20px;
+}
+
+.hero h1 {
+    font-size: 4rem;
+    color: var(--white);
+    margin-bottom: 20px;
+    line-height: 1.1;
+}
+
+.highlight {
+    color: var(--primary-color);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* Bouton Principal */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    background: transparent;
+    margin-top: 10px;
+}
+
+.btn:hover {
+    background-color: rgba(100, 255, 218, 0.1); /* Fond vert très clair transparent */
+}
+
+/* =========================================
+   4. SECTIONS & TITRES
+   ========================================= */
+.container {
+    padding: 100px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 40px;
+    display: flex;
+    align-items: center;
+}
+
+/* Ligne décorative après les titres */
+h2::after {
+    content: "";
+    display: block;
+    width: 200px;
+    height: 1px;
+    background-color: #233554;
+    margin-left: 20px;
+}
+
+/* =========================================
+   5. GRILLE DE PROJETS
+   ========================================= */
+/* --- Style Carte Textuelle (Minimaliste) --- */
+
+.project-card {
+    background-color: #112240; /* Fond bleu nuit */
+    border: 1px solid #233554; /* Bordure discrète */
+    border-radius: 4px;        /* Coins légèrement arrondis */
+    transition: transform 0.3s ease, border-color 0.3s ease;
+    height: 100%;              /* Pour que toutes les cartes aient la même hauteur */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px); /* Remonte légèrement au survol */
+    border-color: var(--primary-color); /* La bordure devient verte au survol */
+}
+
+.card-content {
+    padding: 30px; /* Plus d'espace intérieur car il n'y a pas d'image */
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card-content h3 {
+    color: var(--white); /* Titre en blanc */
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.project-description {
+    color: var(--text-color); /* Texte en gris clair */
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 25px;
+    flex-grow: 1; /* Pousse le bouton vers le bas */
+}
+
+/* On s'assure que le style de l'image (s'il traîne encore) ne gêne pas */
+.card-image {
+    display: none !important;
+}
+
+/* =========================================
+   6. FORMULAIRE DE CONTACT (Stylisé)
+   ========================================= */
+.contact-wrapper {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--light-bg);
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-size: 0.9rem;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--bg-color); /* Fond foncé pour les champs */
+    border: 1px solid #233554;
+    border-radius: 4px;
+    color: var(--white);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    outline: none;
+    transition: var(--transition);
+}
+
+.form-input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(100, 255, 218, 0.1);
+}
+
+.btn-submit {
+    width: 100%;
+    padding: 15px;
+    background: transparent;
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: var(--transition);
+}
+
+.btn-submit:hover {
+    background-color: rgba(100, 255, 218, 0.1);
+}
+
+/* Message de succès (Flash message) */
+.alert-success {
+    background-color: rgba(100, 255, 218, 0.1);
+    color: var(--primary-color);
+    border: 1px solid var(--primary-color);
+    padding: 15px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+/* =========================================
+   7. FOOTER
+   ========================================= */
+footer {
+    background-color: #020c1b;
+    text-align: center;
+    padding: 30px 0;
+    font-size: 0.9rem;
+    margin-top: 50px;
+}
+
+.socials {
+    margin-bottom: 15px;
+}
+
+.socials a {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 1.3rem;
+    color: var(--text-color);
+}
+
+.socials a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+/* =========================================
+   8. RESPONSIVE (Tablettes & Mobiles)
+   ========================================= */
+@media screen and (max-width: 768px) {
+    /* Navbar Mobile */
+    .nav-links {
+        position: absolute;
+        right: 0;
+        height: 92vh;
+        top: 80px;
+        background-color: var(--light-bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        width: 60%;
+        transform: translateX(100%); /* Caché par défaut */
+        transition: transform 0.5s ease-in;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
+
+    .nav-active {
+        transform: translateX(0%); /* Visible */
+    }
+
+    .burger {
+        display: block; /* Affiche le burger */
+    }
+
+    /* Ajustement Hero */
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    /* Ajustement Layout */
+    .container {
+        padding: 60px 5%;
+    }
+
+    /* Formulaire sur mobile */
+    .contact-wrapper {
+        padding: 20px;
+        background: transparent;
+        box-shadow: none;
+    }
+}
+/* --- PAGE EXPOSÉ (DETAIL) --- */
+
+.expose-container {
+    padding-top: 120px; /* Pour ne pas être caché par la navbar */
+    max-width: 800px; /* On réduit la largeur pour une meilleure lecture */
+}
+
+.btn-back {
+    display: inline-block;
+    color: var(--text-color);
+    margin-bottom: 30px;
+    font-size: 0.9rem;
+}
+.btn-back:hover { color: var(--primary-color); }
+
+.expose-content {
+    background-color: #112240;
+    padding: 50px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    border: 1px solid #233554;
+}
+
+.expose-title {
+    color: var(--white);
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    text-align: left; /* Titre aligné à gauche comme un doc */
+}
+
+.expose-divider {
+    border: 0;
+    height: 1px;
+    background: #233554;
+    margin-bottom: 30px;
+}
+
+.expose-text {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    line-height: 1.8; /* Espace les lignes pour la lecture */
+    text-align: justify;
+}
+
+/* Style pour les éléments dans l'exposé (si tu mets du gras ou des titres dans l'admin) */
+.expose-text strong { color: var(--primary-color); }
+.expose-text h2 { color: var(--white); margin-top: 30px; margin-bottom: 15px; font-size: 1.5rem; }
+.expose-text ul { margin-left: 20px; margin-bottom: 20px; list-style-type: disc; }
+
+.expose-footer {
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px dashed #233554;
+    text-align: center;
+}
+/* --- IMAGES DANS L'EXPOSÉ --- */
+
+/* Cible toutes les images qui sont à l'intérieur du texte de l'exposé */
+.expose-text img {
+    max-width: 100%;      /* L'image ne dépassera jamais la largeur du texte */
+    height: auto;         /* Garde les proportions */
+    display: block;       /* Force le retour à la ligne */
+    margin: 30px auto;    /* Espace en haut/bas et centrage horizontal */
+    border-radius: 8px;   /* Coins arrondis */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5); /* Jolie ombre portée */
+    border: 1px solid #233554;
+}
+
+/* Petit effet au survol */
+.expose-text img:hover {
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+/* --- STYLE "À PROPOS" (Comme ta photo) --- */
+
+/* 1. Le Titre avec la ligne verte */
+.section-title {
+    font-size: 2rem;
+    color: var(--white);
+    margin-bottom: 30px;
+    position: relative;
+    display: inline-block;
+    font-weight: 700;
+}
+
+/* La petite barre verte sous le titre */
+.section-title::after {
+    content: "";
+    display: block;
+    width: 60px;          /* Longueur de la barre */
+    height: 4px;          /* Épaisseur de la barre */
+    background: var(--primary-color); /* Vert menthe (#64ffda) */
+    margin-top: 10px;
+    border-radius: 2px;
+}
+
+/* 2. Le Paragraphe */
+.about-content p {
+    color: var(--text-color); /* Gris clair */
+    font-size: 1.1rem;
+    max-width: 800px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+/* 3. Les Badges de compétences (Tags) */
+.skills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Espace entre les badges */
+}
+
+.tag {
+    background-color: #112240; /* Fond bleu nuit (plus clair que le fond du site) */
+    color: var(--primary-color); /* Texte vert menthe */
+    padding: 10px 20px;        /* Espace intérieur */
+    border-radius: 50px;       /* Bords très arrondis (Pill shape) */
+    font-size: 0.9rem;
+    font-weight: 500;
+    font-family: 'Fira Code', monospace; /* Police un peu "code" (optionnel) */
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+/* Petit effet quand on passe la souris sur un tag */
+.tag:hover {
+    transform: translateY(-3px);
+    background-color: rgba(100, 255, 218, 0.1);
+}
+/* --- BOUTON CV --- */
+
+/* --- BOUTONS CV (Alignement) --- */
+
+.cv-buttons {
+    display: flex;       /* Met les boutons côte à côte */
+    gap: 20px;           /* Espace de 20px entre les deux boutons */
+    margin-top: 25px;
+    margin-bottom: 35px;
+    flex-wrap: wrap;     /* Permet aux boutons de passer l'un sous l'autre sur petit mobile */
+}
+
+/* Optionnel : Si tu veux que le bouton "Télécharger" soit différent (ex: bordure seulement) */
+/* Tu peux laisser comme ça pour l'instant, les deux auront le même style vert */
+
+/* On s'assure que le conteneur des compétences passe bien en dessous */
+.skills {
+    margin-top: 20px;
+    width: 100%;
+}
+/* --- SECTION CONTACT (INFOS SEULES) --- */
+
+.contact-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.contact-text {
+    font-size: 1.1rem;
+    color: var(--text-color);
+    margin-bottom: 40px;
+}
+
+/* La boite qui contient les infos */
+.contact-box {
+    background-color: #112240;
+    padding: 40px;
+    border-radius: 10px;
+    border: 1px solid #233554;
+    transition: transform 0.3s;
+}
+
+.contact-box:hover {
+    transform: translateY(-5px);
+    border-color: var(--primary-color);
+}
+
+.icon-contact {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+/* Le lien Email en gros */
+.email-link-big {
+    display: inline-block;
+    font-size: 1.5rem; /* Gros texte */
+    font-weight: 700;
+    color: var(--white);
+    margin: 20px 0;
+    border-bottom: 2px solid var(--primary-color); /* Souligné vert */
+    padding-bottom: 5px;
+}
+
+.email-link-big:hover {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.small-note {
+    font-size: 0.9rem;
+    color: var(--text-color);
+    opacity: 0.8;
+    margin-bottom: 30px;
+}
+
+/* --- GRILLE 2 COLONNES AVEC STYLE "BARRE VERTE" --- */
+
+.projects-grid {
+    display: grid;
+    /* On force 2 colonnes de largeur égale */
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px; /* Espace entre les cartes */
+    width: 100%;
+}
+
+.project-card {
+    background-color: #112240;
+    border-radius: 8px;
+    padding: 35px; /* On garde l'espace intérieur aéré */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #233554;
+
+    /* Flexbox pour aligner le contenu proprement */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    position: relative;
+    overflow: hidden;
+    height: 100%; /* Important pour que les cartes aient la même hauteur */
+}
+
+/* La petite barre décorative verte sur le côté gauche */
+.project-card::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: var(--primary-color);
+    opacity: 0.5;
+    transition: 0.3s;
+}
+
+/* Effets au survol */
+.project-card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    border-color: var(--primary-color);
+}
+
+.project-card:hover::before {
+    opacity: 1; /* La barre devient plus brillante */
+}
+
+/* Style du titre */
+.card-content h3 {
+    color: var(--white);
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+/* --- RESPONSIVE MOBILE --- */
+/* Sur tablette et mobile, on repasse à 1 colonne pour que ce soit lisible */
+@media screen and (max-width: 900px) {
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- SECTION PARCOURS (RESUME) --- */
+
+.soft-skills-text {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 15px;
+    border-left: 3px solid var(--primary-color);
+    background: rgba(100, 255, 218, 0.05);
+    color: var(--white);
+    font-size: 0.95rem;
+}
+
+.resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 colonnes égales */
+    gap: 50px;
+    margin-top: 40px;
+}
+
+.resume-subtitle {
+    color: var(--white);
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.resume-subtitle i {
+    color: var(--primary-color);
+}
+
+.resume-item {
+    background-color: #112240;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #233554;
+    transition: transform 0.3s;
+    position: relative;
+}
+
+.resume-item:hover {
+    transform: translateX(10px); /* Petit décalage vers la droite */
+    border-color: var(--primary-color);
+}
+
+.resume-date {
+    display: inline-block;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    font-family: monospace;
+}
+
+.resume-item h4 {
+    color: var(--white);
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.resume-item p {
+    color: var(--text-color);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Responsive : 1 colonne sur mobile */
+@media screen and (max-width: 768px) {
+    .resume-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* --- SECTION HOBBIES (Indépendante) --- */
+
+.hobbies-content {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center; /* Centre tout le bloc */
+}
+
+.hobbies-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Permet aux bulles de passer à la ligne sur mobile */
+    gap: 25px;       /* Un peu plus d'espace entre les bulles */
+    max-width: 900px;
+}
+
+.hobby-item {
+    background-color: #112240;
+    padding: 18px 30px;     /* Bulles un peu plus grosses */
+    border-radius: 50px;
+    border: 1px solid #233554;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+    cursor: default;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.hobby-item i {
+    color: var(--primary-color);
+    font-size: 1.4rem;
+}
+
+.hobby-item span {
+    color: var(--text-color);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+/* Effet au survol */
+.hobby-item:hover {
+    border-color: var(--primary-color);
+    transform: translateY(-5px);
+    background-color: #172a45; /* Légèrement plus clair au survol */
+    box-shadow: 0 10px 20px -10px rgba(100, 255, 218, 0.3);
+}
+
+.hobby-item:hover span {
+    color: var(--white);
+}
+
+/* Responsive Mobile */
+@media screen and (max-width: 600px) {
+    .hobby-item {
+        width: 100%; /* Sur petit écran, les bulles prennent toute la largeur */
+        justify-content: center;
+    }
+}
+/* --- SECTION PROJETS (Style Bulles comme Hobbies) --- */
+
+.projects-bubbles-list {
+    display: flex;
+    justify-content: center; /* Centre les bulles au milieu de la page */
+    flex-wrap: wrap;         /* Permet de passer à la ligne si trop de projets */
+    gap: 20px;               /* Espace entre les bulles */
+    margin-top: 40px;
+    max-width: 900px;        /* Largeur max pour ne pas que ça s'étale trop */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.project-bubble {
+    /* Le style visuel "Badge" */
+    background-color: #112240; /* Fond bleu nuit */
+    border: 1px solid #233554; /* Bordure discrète */
+    border-radius: 50px;       /* C'est ça qui fait la forme arrondie "Pillule" */
+    padding: 15px 30px;        /* Espace intérieur */
+
+    /* Alignement du texte et de l'icône */
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    text-decoration: none;     /* Pas de soulignement */
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+/* Style de l'icône dans la bulle */
+.project-bubble i {
+    color: var(--primary-color); /* Vert fluo */
+    font-size: 1.1rem;
+}
+
+/* Style du texte */
+.project-bubble span {
+    color: var(--text-color);    /* Gris clair */
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+/* --- EFFET AU SURVOL (HOVER) --- */
+.project-bubble:hover {
+    border-color: var(--primary-color); /* Bordure devient verte */
+    transform: translateY(-5px);        /* La bulle monte un peu */
+    background-color: #172a45;          /* Le fond s'éclaircit légèrement */
+    box-shadow: 0 5px 15px rgba(100, 255, 218, 0.1);
+}
+
+.project-bubble:hover span {
+    color: var(--white); /* Le texte devient blanc brillant */
+}
+
+/* Responsive Mobile */
+@media screen and (max-width: 600px) {
+    .project-bubble {
+        width: 100%;       /* Sur mobile, la bulle prend toute la largeur */
+        justify-content: center;
+    }
+}
+
+

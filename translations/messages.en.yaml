@@ -1,0 +1,54 @@
+menu:
+    home: Home
+    about: About Me
+    resume: My Journey
+    projects: Projects
+    hobbies: Interests
+    contact: Contact
+
+hero:
+    greeting: Hi, I am
+    subtitle: Creative & Passionate Web Developer
+    btn: See my projects
+
+about:
+    title: About Me
+    text: |
+        I am a developer specialized in HTML, CSS, and JavaScript. I love creating smooth and interactive web experiences.
+        <br>Always on the lookout for new technologies, I turn your ideas into digital reality.
+    soft_skills: "Beyond coding, my experiences in catering and agriculture have taught me discipline, stress management, and teamwork."
+    cv_view: View my Resume
+    cv_download: Download
+
+resume:
+    title: My Journey
+    education: Education
+    experience: Experience
+    bac_desc: "Option Information Systems and Digital (SIN)."
+    job1_date: "August 2025 - Present"
+    job1_title: "Restaurant Employee"
+    job1_desc: "Customer service and stress management during peak hours."
+    job2_date: "July 2025"
+    job2_title: "Agricultural Worker"
+    job2_desc: "Seasonal work requiring endurance and safety rule compliance."
+    job3_date: "Summer 2022"
+    job3_title: "Musical Entertainer (DJ)"
+    job3_desc: "Event hosting, adaptability to the audience, and coordination."
+
+hobbies:
+    title: Hobbies & Interests
+    sport: Sports
+    music: Music & Mixing
+    gaming: Video Games
+    auto: Cars & Automotive
+
+projects:
+    title: My Projects
+    empty: No projects found for now.
+    view: View project
+
+contact:
+    title: Contact Me
+    text: I am currently looking for an internship. Whether you have a question or a project, my inbox is open!
+    prompt: Feel free to email me directly:
+    note: I usually reply within 24 hours.

@@ -1,0 +1,54 @@
+menu:
+    home: Accueil
+    about: À propos
+    resume: Mon Parcours
+    projects: Mes Projets
+    hobbies: Hobbies
+    contact: Contact
+
+hero:
+    greeting: Salut, je suis
+    subtitle: Développeur Web Créatif & Passionné
+    btn: Voir mes projets
+
+about:
+    title: À propos de moi
+    text: |
+        Je suis un développeur spécialisé en HTML, CSS et JavaScript. J'aime créer des expériences web fluides et interactives.
+        <br>Toujours à l'affût des nouvelles technologies, je transforme vos idées en réalité numérique.
+    soft_skills: "Au-delà du code, mes expériences en restauration et agriculture m'ont appris la rigueur, la gestion du stress et le sens du travail en équipe."
+    cv_view: Voir mon CV
+    cv_download: Télécharger
+
+resume:
+    title: Mon Parcours
+    education: Formation
+    experience: Expériences
+    bac_desc: "Option Systèmes d'Information et Numérique (SIN)."
+    job1_date: "Août 2025 - Présent"
+    job1_title: "Employé Polyvalent"
+    job1_desc: "Accueil client, service et gestion du stress en période de rush."
+    job2_date: "Juillet 2025"
+    job2_title: "Ouvrier Agricole"
+    job2_desc: "Travail saisonnier nécessitant endurance et respect des consignes de sécurité."
+    job3_date: "Été 2022"
+    job3_title: "Animateur Musical (DJ)"
+    job3_desc: "Animation d'événements, adaptabilité face au public et coordination."
+
+hobbies:
+    title: Centres d'intérêt
+    sport: Sports
+    music: Musique & Mix
+    gaming: Jeux Vidéos
+    auto: Automobile
+
+projects:
+    title: Mes Projets
+    empty: Aucun projet pour le moment.
+    view: Voir le projet
+
+contact:
+    title: Me Contacter
+    text: Je suis actuellement à la recherche d'un stage. Que vous ayez une question ou un projet, ma boîte mail est ouverte !
+    prompt: N'hésitez pas à m'écrire directement :
+    note: Je réponds généralement sous 24h.

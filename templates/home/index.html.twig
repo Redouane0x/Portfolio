@@ -1,0 +1,167 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ 'Portfolio'|trans }}{% endblock %}
+
+{% block body %}
+
+    <section id="home" class="hero">
+        <div class="hero-content" data-aos="fade-up">
+            {# On garde le span highlight autour du prénom #}
+            <h1>{{ 'hero.greeting'|trans }} <span class="highlight">Redouane</span></h1>
+            <p>{{ 'hero.subtitle'|trans }}</p>
+            <a href="#projects" class="btn">{{ 'hero.btn'|trans }}</a>
+        </div>
+    </section>
+
+    <section id="about" class="container">
+        <h2 class="section-title">{{ 'about.title'|trans }}</h2>
+
+        <div class="about-content" data-aos="fade-right">
+            <div class="about-text">
+                <p>
+                    {{ 'about.text'|trans|raw }}
+                </p>
+
+                <p class="soft-skills-text">
+                    <i class="fas fa-quote-left" style="color: var(--primary-color); margin-right: 10px;"></i>
+                    <em>{{ 'about.soft_skills'|trans }}</em>
+                </p>
+
+                <div class="cv-buttons">
+                    <a href="{{ asset('uploads/cv_bouzara_abderahmane_redouane.pdf') }}" target="_blank" class="btn">
+                        <i class="fas fa-eye"></i> {{ 'about.cv_view'|trans }}
+                    </a>
+                    <a href="{{ asset('uploads/cv_bouzara_abderahmane_redouane.pdf') }}" class="btn" download="cv_bouzara_abderahmane_redouane.pdf">
+                        <i class="fas fa-download"></i> {{ 'about.cv_download'|trans }}
+                    </a>
+                </div>
+            </div>
+
+            <div class="skills">
+                <span class="tag">HTML5</span>
+                <span class="tag">CSS3</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">React</span>
+                <span class="tag">Node.js</span>
+                <span class="tag">PHP</span>
+                <span class="tag">Symfony</span>
+                <span class="tag">Laravel</span>
+                <span class="tag">Java</span>
+                <span class="tag">SQL</span>
+                <span class="tag">Git</span>
+            </div>
+        </div>
+    </section>
+
+    <section id="resume" class="container">
+        <h2 class="section-title">{{ 'resume.title'|trans }}</h2>
+
+        <div class="resume-grid">
+
+            <div class="resume-column" data-aos="fade-up">
+                <h3 class="resume-subtitle"><i class="fas fa-graduation-cap"></i> {{ 'resume.education'|trans }}</h3>
+
+                <div class="resume-item">
+                    <span class="resume-date">2023 - {{ 'now'|date('Y') }}</span>
+                    <h4>BUT Informatique</h4>
+                    <p>IUT de Lens (Université d'Artois)</p>
+                </div>
+
+                <div class="resume-item">
+                    <span class="resume-date">2023</span>
+                    <h4>Baccalauréat STI2D (SIN)</h4>
+                    <p>{{ 'resume.bac_desc'|trans }}</p>
+                </div>
+            </div>
+
+            <div class="resume-column" data-aos="fade-up" data-aos-delay="100">
+                <h3 class="resume-subtitle"><i class="fas fa-briefcase"></i> {{ 'resume.experience'|trans }}</h3>
+
+                <div class="resume-item">
+                    <span class="resume-date">{{ 'resume.job1_date'|trans }}</span>
+                    <h4>{{ 'resume.job1_title'|trans }}</h4>
+                    <p>Gur Kebab - {{ 'resume.job1_desc'|trans }}</p>
+                </div>
+
+                <div class="resume-item">
+                    <span class="resume-date">{{ 'resume.job2_date'|trans }}</span>
+                    <h4>{{ 'resume.job2_title'|trans }}</h4>
+                    <p>{{ 'resume.job2_desc'|trans }}</p>
+                </div>
+
+                <div class="resume-item">
+                    <span class="resume-date">{{ 'resume.job3_date'|trans }}</span>
+                    <h4>{{ 'resume.job3_title'|trans }}</h4>
+                    <p>{{ 'resume.job3_desc'|trans }}</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hobbies" class="container">
+
+        <h2 class="section-title">{{ 'hobbies.title'|trans }}</h2>
+
+        <div class="hobbies-content" data-aos="fade-up">
+            <div class="hobbies-list">
+                <div class="hobby-item">
+                    <i class="fas fa-dumbbell"></i>
+                    <span>{{ 'hobbies.sport'|trans }}</span>
+                </div>
+
+                <div class="hobby-item">
+                    <i class="fas fa-music"></i>
+                    <span>{{ 'hobbies.music'|trans }}</span>
+                </div>
+
+                <div class="hobby-item">
+                    <i class="fas fa-gamepad"></i>
+                    <span>{{ 'hobbies.gaming'|trans }}</span>
+                </div>
+
+                <div class="hobby-item">
+                    <i class="fas fa-car"></i>
+                    <span>{{ 'hobbies.auto'|trans }}</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section id="projects" class="container">
+        <h2 class="section-title">{{ 'projects.title'|trans }}</h2>
+
+        <div class="projects-bubbles-list">
+            {% for project in projects %}
+                <a href="{{ path('app_project_show', {'id': project.id}) }}" class="project-bubble" data-aos="fade-up">
+
+                    <i class="fas fa-folder-open"></i>
+
+                    <span>{{ project.title }}</span>
+                </a>
+            {% else %}
+                <p>{{ 'projects.empty'|trans }}</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <section id="contact" class="container">
+        <h2 class="section-title">{{ 'contact.title'|trans }}</h2>
+
+        <div class="contact-content" data-aos="fade-up">
+            <p class="contact-text">{{ 'contact.text'|trans }}</p>
+
+            <div class="contact-box">
+                <i class="fas fa-envelope-open-text icon-contact"></i>
+                <p>{{ 'contact.prompt'|trans }}</p>
+
+                <a href="mailto:redouanex2005@gmail.com" class="email-link-big">
+                    redouanex2005@gmail.com
+                </a>
+
+                <p class="small-note">{{ 'contact.note'|trans }}</p>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
