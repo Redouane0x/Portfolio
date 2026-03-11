@@ -23,7 +23,7 @@ primary_region = 'cdg'
   memory_mb = 2048
 
 [env]
-DATABASE_URL = "sqlite:///%kernel.project_dir%/var/data/database.sqlite"
+DATABASE_URL = "sqlite:///%kernel.project_dir%/var/data/data.db"
 
 [deploy]
 release_command = "php bin/console doctrine:migrations:migrate --no-interaction"
