@@ -42,3 +42,6 @@ RUN mkdir -p /var/www/html/var/data
 RUN touch /var/www/html/var/data/data.db
 RUN chown -R www-data:www-data /var/www/html/var
 RUN chmod -R 777 /var/www/html/var/data
+
+ENV DATABASE_URL="sqlite:///%kernel.project_dir%/var/data/data.db"
+RUN php bin/console doctrine:migrations:migrate --no-interaction
