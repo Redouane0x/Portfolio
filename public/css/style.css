@@ -798,7 +798,6 @@ footer {
     color: var(--primary-color); /* Vert fluo */
     font-size: 1.1rem;
 }
-
 /* Style du texte */
 .project-bubble span {
     color: var(--text-color);    /* Gris clair */
